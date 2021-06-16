@@ -1,19 +1,19 @@
 class User {
-  String _userid;
+  String _id;
   String _username;
   String _email;
   String _password;
   String _fullname;
 
-  User({userid, username, email, password, fullname})
-      : this._userid = userid,
+  User({id, username, email, password, fullname})
+      : this._id = id,
         this._username = username,
         this._email = email,
         this._password = password,
         this._fullname = fullname;
 
-  get userid => _userid;
-  set userid(value) => _userid = value;
+  get id => _id;
+  set id(value) => _id = value;
   get username => _username;
   set username(value) => _username = value;
   get email => _email;
@@ -25,7 +25,7 @@ class User {
 
   User.copy(User from)
       : this(
-          userid: from.userid,
+          id: from.id,
           username: from.username,
           email: from.email,
           password: from.password,
@@ -34,9 +34,17 @@ class User {
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-            userid: json['id'],
+            id: json['id'],
             username: json['username'],
             email: json['email'],
             password: json['password'],
             fullname: json['fullname']);
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'username': username,
+        'email': email,
+        'password': password,
+        'fullname': fullname,
+      };
 }

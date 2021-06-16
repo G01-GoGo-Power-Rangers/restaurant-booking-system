@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/router.dart';
-import 'package:restaurant_booking_system/screens/main_screen/main_screen.dart';
 
 void main() {
   runApp(MyApp());
