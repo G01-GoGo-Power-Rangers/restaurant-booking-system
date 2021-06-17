@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/constant.dart';
 import 'package:restaurant_booking_system/screens/register/register_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class RegisterScreenBody extends StatelessWidget {
   final RegisterScreenState _state;
@@ -22,22 +23,22 @@ class RegisterScreenBody extends StatelessWidget {
           const SizedBox(height: 20),
           _buildTextField(
             hint: 'Full Name',
-            onChanged: (value) => state.fullname = value,
+            onChanged: (value) => state.widget.user.fullname = value,
           ),
           const SizedBox(height: 15),
           _buildTextField(
             hint: 'Username',
-            onChanged: (value) => state.username = value,
+            onChanged: (value) => state.widget.user.username = value,
           ),
           const SizedBox(height: 15),
           _buildTextField(
             hint: 'Email',
-            onChanged: (value) => state.email = value,
+            onChanged: (value) => state.widget.user.email = value,
           ),
           const SizedBox(height: 15),
           _buildTextField(
             hint: 'Password',
-            onChanged: (value) => state.password = value,
+            onChanged: (value) => state.widget.user.password = value,
             isObscure: state.hidePassword,
             button: IconButton(
               onPressed: () => state.hidePassword = !state.hidePassword,
@@ -49,7 +50,7 @@ class RegisterScreenBody extends StatelessWidget {
             hint: 'Confirm Password',
             onChanged: (value) {
               state.confirmPassword = value;
-              // comparePassword();
+              state.passwordSame = comparePassword();
             },
             isObscure: state.hidePassword,
             button: IconButton(
@@ -57,24 +58,47 @@ class RegisterScreenBody extends StatelessWidget {
               icon: Icon(Icons.visibility),
             ),
           ),
-          Text(
-            !state.passwordSame ? 'Password do not match' : '',
-            style: TextStyle(
-                fontSize: 18, color: Colors.red, fontWeight: FontWeight.bold),
+          SizedBox(
+            height: 25,
+            child: state.passwordSame == null
+                ? null
+                : state.passwordSame
+                    ? DefaultTextStyle(
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green),
+                        child: AnimatedTextKit(
+                          pause: Duration(milliseconds: 0),
+                          repeatForever: true,
+                          animatedTexts: [
+                            RotateAnimatedText('Password matched!')
+                          ],
+                        ))
+                    : DefaultTextStyle(
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red),
+                        child: AnimatedTextKit(
+                          pause: Duration(milliseconds: 0),
+                          repeatForever: true,
+                          animatedTexts: [
+                            RotateAnimatedText('Password does not match')
+                          ],
+                        )),
           ),
           const SizedBox(height: 30),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: kPrimaryColorDarker,
-              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-              minimumSize: Size(330.0, 35.0),
-              textStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            child: Text('REGISTER'),
-            onPressed: () {
-              state.passwordSame = comparePassword();
-            },
-          ),
+              style: ElevatedButton.styleFrom(
+                primary: kPrimaryColorDarker,
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                minimumSize: Size(330.0, 35.0),
+                textStyle:
+                    TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+              child: Text('REGISTER'),
+              onPressed: () => onRegisterPressed()),
           const SizedBox(height: 10),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, '/login'),
@@ -110,8 +134,18 @@ class RegisterScreenBody extends StatelessWidget {
     );
   }
 
+  onRegisterPressed() async {
+    final _user =
+        await state.widget.userservice.createNewUser(state.widget.user);
+
+    if (_user == null)
+      print('Regiter failed');
+    else
+      print('Register success');
+  }
+
   bool comparePassword() {
-    if (state.password == state.confirmPassword)
+    if (state.widget.user.password == state.confirmPassword)
       return true;
     else
       return false;

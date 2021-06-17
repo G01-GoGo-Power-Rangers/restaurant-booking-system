@@ -2,9 +2,17 @@ import 'rest.dart';
 import '../models/user.dart';
 
 class UserService {
-  static Future<User> getUserByLoginAndPassword(
+  Future<User> getUserByLoginAndPassword(
       {String username, String password}) async {
     final json = await Rest.get('users/user/$username/$password');
+
+    if (json == null) return null;
+
+    return User.fromJson(json);
+  }
+
+  Future<User> createNewUser(User user) async {
+    final json = await Rest.post('users/adduser', data: user);
 
     if (json == null) return null;
 

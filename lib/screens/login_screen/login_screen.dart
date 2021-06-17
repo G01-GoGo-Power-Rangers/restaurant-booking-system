@@ -8,6 +8,8 @@ class LoginScreen extends StatefulWidget {
 
   static Route route() =>
       MaterialPageRoute(builder: (context) => LoginScreen());
+
+  final userservice = UserService();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -26,8 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
   set showErrorMsg(value) => setState(() => _showErrorMsg = value);
 
   onLoginPressed() async {
-    final _user = await UserService.getUserByLoginAndPassword(
-        username: username, password: password);
+    final _user = await widget.userservice
+        .getUserByLoginAndPassword(username: username, password: password);
 
     if (_user == null)
       showErrorMsg = !showErrorMsg;
