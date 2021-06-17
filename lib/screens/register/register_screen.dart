@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/screens/register/register_screen_body.dart';
+import 'package:restaurant_booking_system/services/user_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
   RegisterScreenState createState() => RegisterScreenState();
 
-  static Route route() =>
-      MaterialPageRoute(builder: (context) => RegisterScreen());
+  static Route route({user}) =>
+      MaterialPageRoute(builder: (context) => RegisterScreen(user: user));
+
+  final User _user;
+  final userservice = UserService();
+
+  RegisterScreen({user}) : _user = user;
+
+  User get user => _user;
 }
 
 class RegisterScreenState extends State<RegisterScreen> {
@@ -17,7 +26,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   String _password = '';
   String _confirmPassword = '';
   bool _hidePassword = true;
-  bool _passwordSame = true;
+  bool _passwordSame;
 
   get fullname => _fullname;
   set fullname(value) => _fullname = value;

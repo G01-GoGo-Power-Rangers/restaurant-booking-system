@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/screens/customer/menu/menu_screen.dart';
 import 'package:restaurant_booking_system/screens/home_screen/home_screen.dart';
 import 'package:restaurant_booking_system/screens/login_screen/login_screen.dart';
@@ -15,7 +16,7 @@ Route<dynamic> createRoute(settings) {
       return LoginScreen.route();
 
     case '/register':
-      return RegisterScreen.route();
+      return RegisterScreen.route(user: User());
 
     case '/menu':
       return MenuScreen.route();
