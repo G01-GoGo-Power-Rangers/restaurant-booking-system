@@ -30,10 +30,9 @@ class LoginViewModel extends ChangeNotifier {
         username: username, password: password);
 
     if (_user == null)
-      showErrorMsg = !showErrorMsg;
+      showErrorMsg = true;
     else {
-      print('success login');
-      showErrorMsg = !showErrorMsg;
+      showErrorMsg = false;
       Navigator.pushNamed(context, '/home');
     }
   }

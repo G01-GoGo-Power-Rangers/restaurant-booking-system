@@ -14,13 +14,6 @@ class User {
         this._fullname = fullname,
         this._usertype = usertype;
 
-  User.newuser({username, email, password, fullname, usertype})
-      : this._username = username,
-        this._email = email,
-        this._password = password,
-        this._usertype = usertype,
-        this._fullname = fullname;
-
   get id => _id;
   set id(value) => _id = value;
   get username => _username;

@@ -23,6 +23,7 @@ class LoginScreenBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Consumer<LoginViewModel>(
+              // Username Textfield======
               builder: (_, notifier, __) => _buildTextField(
                     hint: 'Username',
                     onChanged: (value) => notifier.username = value,
@@ -32,6 +33,7 @@ class LoginScreenBody extends StatelessWidget {
                   )),
           const SizedBox(height: 20),
           Consumer<LoginViewModel>(
+              // Password textfield======
               builder: (_, notifier, __) => _buildTextField(
                     hint: 'Password',
                     onChanged: (value) => notifier.password = value,

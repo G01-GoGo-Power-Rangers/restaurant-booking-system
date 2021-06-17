@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 import 'package:restaurant_booking_system/router.dart';
+import 'package:restaurant_booking_system/viewmodels/register_viewmodel.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => LoginViewModel()),
+      ChangeNotifierProvider(create: (_) => RegisterViewModel()),
     ],
     child: MyApp(),
   ));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +24,6 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       // ),
-      // home: MainScreen(),
       onGenerateRoute: createRoute,
       initialRoute: '/',
     );
