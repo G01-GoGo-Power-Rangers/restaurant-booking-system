@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/viewmodels/view_menu_view_model.dart';
 
 class MainScreenBody extends StatelessWidget {
   const MainScreenBody({
@@ -8,6 +10,9 @@ class MainScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ViewMenuViewModel viewMenuViewModel =
+        Provider.of<ViewMenuViewModel>(context);
+
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -66,7 +71,10 @@ class MainScreenBody extends StatelessWidget {
                     TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
               ),
               child: Text('MENU'),
-              onPressed: () => Navigator.pushNamed(context, '/menu'),
+              onPressed: () {
+                viewMenuViewModel.getFoodList();
+                Navigator.pushNamed(context, '/menu');
+              },
             ),
           ],
         ),
