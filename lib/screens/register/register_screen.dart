@@ -17,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: kPrimaryColor,
         elevation: 0.0,
       ),

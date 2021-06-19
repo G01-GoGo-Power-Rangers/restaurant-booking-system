@@ -3,7 +3,7 @@ import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/services/user_service.dart';
 
 class RegisterViewModel extends ChangeNotifier {
-  User _user;
+  User _user = User();
 
   final userservice = UserService();
 

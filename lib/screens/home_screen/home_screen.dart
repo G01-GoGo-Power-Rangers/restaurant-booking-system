@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/constant.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,8 +11,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('home'),
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Container(),
+          backgroundColor: kPrimaryColor,
+          title: Text(
+            'Home',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+        body: Text('home'),
+      ),
     );
   }
 }

@@ -33,7 +33,8 @@ class LoginViewModel extends ChangeNotifier {
       showErrorMsg = true;
     else {
       showErrorMsg = false;
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home', ModalRoute.withName('/'));
     }
   }
 }
