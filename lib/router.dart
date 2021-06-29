@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/screens/customer/booking/booking_screen.dart';
 import 'package:restaurant_booking_system/screens/customer/menu/view_menu/view_menu_screen.dart';
 import 'package:restaurant_booking_system/screens/home_screen/home_screen.dart';
 import 'package:restaurant_booking_system/screens/login_screen/login_screen.dart';
@@ -9,6 +10,7 @@ import 'package:restaurant_booking_system/screens/splash_screen.dart';
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
+      // return BookingScreen.route();
       // return HomeScreen.route();
       return SplashScreen.route();
 
