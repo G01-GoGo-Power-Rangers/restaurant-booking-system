@@ -25,32 +25,34 @@ class ViewMenuBody extends StatelessWidget {
             child: _viewMenuViewModel.foodListFiltered == null
                 ? Center(
                     child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: kPrimaryColorDarker,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: Text(
-                          'Loading....',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          color: kPrimaryColorDarker,
                         ),
-                      )
-                    ],
-                  ))
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
+                          child: Text(
+                            'Loading....',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 : GridView.builder(
                     itemCount: _viewMenuViewModel.foodListFiltered.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 15,
+                      mainAxisSpacing: 30,
                       crossAxisSpacing: 15,
-                      childAspectRatio: 0.75,
+                      childAspectRatio: 0.9,
                     ),
                     itemBuilder: (context, index) => FoodCard(
-                          food: _viewMenuViewModel.foodListFiltered[index],
-                        )),
+                      food: _viewMenuViewModel.foodListFiltered[index],
+                    ),
+                  ),
           ),
         ),
       ],
@@ -71,16 +73,16 @@ class FoodCard extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(0),
-            // height: 180,
+            height: 140,
             // width: 160,
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.3),
                     offset: Offset(0, 2),
-                    spreadRadius: 3,
-                    blurRadius: 7),
+                    spreadRadius: 2,
+                    blurRadius: 2),
               ],
               borderRadius: BorderRadius.circular(16),
               border: Border.all(width: 1.0, color: Colors.transparent),
@@ -103,7 +105,7 @@ class FoodCard extends StatelessWidget {
           Text(
             'RM ${food.foodprice.toDouble().toStringAsFixed(2)}',
             style: TextStyle(fontWeight: FontWeight.bold),
-          )
+          ),
         ],
       ),
     );

@@ -9,6 +9,7 @@ import 'package:restaurant_booking_system/screens/splash_screen.dart';
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
+      // return HomeScreen.route();
       return SplashScreen.route();
 
     case '/main':

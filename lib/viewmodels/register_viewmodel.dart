@@ -28,6 +28,8 @@ class RegisterViewModel extends ChangeNotifier {
   }
 
   onRegisterPressed() async {
+    user.usertype = 'customer';
+
     final _user = await userservice.createNewUser(user);
 
     if (_user == null)

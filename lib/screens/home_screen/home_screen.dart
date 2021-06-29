@@ -22,7 +22,22 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(color: Colors.black),
           ),
         ),
-        body: Text('home'),
+        body: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 15,
+            crossAxisSpacing: 15,
+            childAspectRatio: 0.85,
+          ),
+          children: [
+            Container(
+              child: Text('data'),
+            ),
+            Container(
+              child: Text('data'),
+            )
+          ],
+        ),
       ),
     );
   }
