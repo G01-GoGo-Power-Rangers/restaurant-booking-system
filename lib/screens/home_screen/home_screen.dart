@@ -1,43 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/screens/home_screen/home_screen_body.dart';
+import 'package:restaurant_booking_system/screens/home_screen/home_screen_bottomnav.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-
+class HomeScreen extends StatelessWidget {
   static Route route() => MaterialPageRoute(builder: (context) => HomeScreen());
-}
 
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           leading: Container(),
-          backgroundColor: kPrimaryColor,
-          title: Text(
-            'Home',
-            style: TextStyle(color: Colors.black),
-          ),
+          backgroundColor: kPrimaryColorDark,
         ),
-        body: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 15,
-            crossAxisSpacing: 15,
-            childAspectRatio: 0.85,
-          ),
-          children: [
-            Container(
-              child: Text('data'),
-            ),
-            Container(
-              child: Text('data'),
-            )
-          ],
-        ),
+        body: HomeScreenBody(),
+        bottomNavigationBar: HomeBottomNav(),
       ),
     );
   }
