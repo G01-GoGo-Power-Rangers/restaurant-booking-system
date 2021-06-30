@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
 import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 
 class HomeBottomNav extends StatelessWidget {
   const HomeBottomNav({
     Key key,
+    @required this.homeScreenViewModel,
   }) : super(key: key);
+
+  final HomeScreenViewModel homeScreenViewModel;
 
   @override
   Widget build(BuildContext context) {
-    HomeScreenViewModel homeScreenViewModel =
-        Provider.of<HomeScreenViewModel>(context);
-
     return BottomNavigationBar(
       elevation: 20,
       backgroundColor: kPrimaryColorDark,

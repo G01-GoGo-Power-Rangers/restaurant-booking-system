@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/services/user_service.dart';
 
+import '../dependencies.dart';
+
 class RegisterViewModel extends ChangeNotifier {
   User _user = User();
 
-  final userservice = UserService();
+  final UserService userService = service();
 
   String _confirmPassword = '';
   bool _hidePassword = true;
@@ -30,7 +32,7 @@ class RegisterViewModel extends ChangeNotifier {
   onRegisterPressed() async {
     user.usertype = 'customer';
 
-    final _user = await userservice.createNewUser(user);
+    final _user = await userService.createNewUser(user);
 
     if (_user == null)
       print('Regiter failed');

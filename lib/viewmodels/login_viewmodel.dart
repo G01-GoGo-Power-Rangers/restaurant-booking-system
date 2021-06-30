@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/services/user_service.dart';
+
+import '../dependencies.dart';
 
 class LoginViewModel extends ChangeNotifier {
   String _username;
   String _password;
   bool _showErrorMsg = false;
   bool _hidePassword = true;
+  User _user = User();
 
-  final userservice = UserService();
+  final userService = service<UserService>();
+  // final UserService userService = service(); //same with declare
+
+  User get user => _user;
+  set user(value) => _user = value;
 
   get username => _username;
   set username(value) => _username = value;
@@ -26,15 +34,21 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   onLoginPressed(BuildContext context) async {
-    final _user = await userservice.getUserByLoginAndPassword(
+    user = await userService.getUserByLoginAndPassword(
         username: username, password: password);
 
-    if (_user == null)
+    if (user == null)
       showErrorMsg = true;
     else {
       showErrorMsg = false;
       Navigator.pushNamedAndRemoveUntil(
           context, '/home', ModalRoute.withName('/'));
     }
+  }
+
+  void onTapLogOut(BuildContext context) {
+    user = null;
+    Navigator.pushNamedAndRemoveUntil(
+        context, '/main', ModalRoute.withName('/home'));
   }
 }
