@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_booking_system/models/user.dart';
-import 'package:restaurant_booking_system/screens/customer/menu/menu_screen.dart';
+import 'package:restaurant_booking_system/screens/customer/booking/booking_screen.dart';
+import 'package:restaurant_booking_system/screens/customer/menu/view_menu/view_menu_screen.dart';
 import 'package:restaurant_booking_system/screens/home_screen/home_screen.dart';
+import 'package:restaurant_booking_system/screens/home_screen/profile/profile_screen.dart';
 import 'package:restaurant_booking_system/screens/login_screen/login_screen.dart';
 import 'package:restaurant_booking_system/screens/main_screen/main_screen.dart';
 import 'package:restaurant_booking_system/screens/register/register_screen.dart';
+import 'package:restaurant_booking_system/screens/splash_screen.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
+      // return BookingScreen.route();
+      // return HomeScreen.route();
+      return SplashScreen.route();
+    // return ProfileScreen.route();
+
     case '/main':
       return MainScreen.route();
 
@@ -16,7 +23,7 @@ Route<dynamic> createRoute(settings) {
       return LoginScreen.route();
 
     case '/register':
-      return RegisterScreen.route(user: User());
+      return RegisterScreen.route();
 
     case '/menu':
       return MenuScreen.route();
