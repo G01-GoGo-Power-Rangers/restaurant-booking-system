@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/dependencies.dart';
 import 'package:restaurant_booking_system/models/food.dart';
 import 'package:restaurant_booking_system/services/food_service.dart';
 
 class ViewMenuViewModel extends ChangeNotifier {
-  FoodService foodservice = FoodService();
+  final FoodService foodservice = service();
 
   List<String> categories = ["Breakfast", "Lunch", "Dinner"];
   List<Food> foodList;

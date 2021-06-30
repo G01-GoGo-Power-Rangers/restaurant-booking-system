@@ -6,7 +6,10 @@ import 'package:restaurant_booking_system/router.dart';
 import 'package:restaurant_booking_system/viewmodels/register_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/view_menu_view_model.dart';
 
+import 'dependencies.dart' as di;
+
 void main() {
+  di.init();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => LoginViewModel()),

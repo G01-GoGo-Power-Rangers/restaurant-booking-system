@@ -49,10 +49,6 @@ class HomeScreenBody extends StatelessWidget {
                     backgroundImage: NetworkImage(
                       'https://firebasestorage.googleapis.com/v0/b/fir-first-project-98a7e.appspot.com/o/profilepictest.jpg?alt=media&token=bdb0608d-86d9-460c-b6ea-33fa3fc5057d',
                     ),
-                    // child: Image.asset(
-                    //   'assets/images/foodimage.jpg',
-                    //   fit: BoxFit.cover,
-                    // ),
                   ),
                 ],
               ),
