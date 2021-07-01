@@ -8,7 +8,7 @@ import 'services/user_service.dart';
 GetIt service = GetIt.instance;
 
 void init() {
-  service.registerLazySingleton<Rest>(() => RestService());
-  service.registerLazySingleton(() => UserService());
-  service.registerLazySingleton(() => FoodService());
+  service.registerLazySingleton<Rest>(() => RestService()); //for other services
+  service.registerLazySingleton(() => UserService()); //for providers
+  service.registerLazySingleton(() => FoodService()); //for providers
 }
