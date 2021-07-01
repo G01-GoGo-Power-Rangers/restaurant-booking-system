@@ -1,10 +1,10 @@
 class Booking {
   String _id;
-  DateTime _date;
-  DateTime _time;
+  String _date;
+  String _time;
   String _status;
   int _person;
-  double _price;
+  dynamic _price;
   String _table;
   String _userid;
 
