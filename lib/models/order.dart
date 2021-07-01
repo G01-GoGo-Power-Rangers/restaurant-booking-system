@@ -1,7 +1,7 @@
 class Order {
   String _id = '';
   String _bookingid = '';
-  double _totalPrice;
+  dynamic _totalPrice;
   List<Map> _foods;
 
   get id => _id;
