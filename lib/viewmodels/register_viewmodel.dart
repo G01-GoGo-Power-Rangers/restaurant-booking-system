@@ -6,6 +6,14 @@ import '../dependencies.dart';
 
 class RegisterViewModel extends ChangeNotifier {
   User _user = User();
+  // Order _order = Order(
+  //     id: 'aasdasdasdasda',
+  //     bookingid: 'altgauwizxbviug',
+  //     foods: [
+  //       {"name": "nasi lemak", "quantity": 5},
+  //       {"name": "nasi goreng", "quantity": 4}
+  //     ],
+  //     totalPrice: 150.0);
 
   final UserService userService = service();
 
@@ -38,6 +46,11 @@ class RegisterViewModel extends ChangeNotifier {
       print('Regiter failed');
     else
       print('Register success');
+
+    // final stringOrder = jsonEncode(_order);
+    // print(stringOrder);
+    // print(stringOrder.length);
+    // print(_order.foods[0]['name']);
   }
 
   bool comparePassword() {
