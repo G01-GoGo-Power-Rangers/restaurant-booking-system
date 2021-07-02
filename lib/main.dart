@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:restaurant_booking_system/viewmodels/booking_list_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 import 'package:restaurant_booking_system/router.dart';
@@ -16,7 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => RegisterViewModel()),
       ChangeNotifierProvider(create: (_) => ViewMenuViewModel()),
       ChangeNotifierProvider(create: (_) => HomeScreenViewModel()),
-      //ChangeNotifierProvider(create: (_) => )
+      ChangeNotifierProvider(create: (_) => BookingListViewModel())
     ],
     child: MyApp(),
   ));

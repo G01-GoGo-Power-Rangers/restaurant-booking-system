@@ -11,7 +11,7 @@ class BookingListAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('Manage Booking'),
+      title: Text('Booking List'),
       backgroundColor: kPrimaryColor,
       bottom: TabBar(
         tabs: <Widget>[
