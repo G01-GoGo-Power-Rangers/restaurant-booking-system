@@ -15,9 +15,9 @@ Route<dynamic> createRoute(settings) {
     case '/':
       // return BookingScreen.route();
       // return HomeScreen.route();
-      return SplashScreen.route();
-    // return ProfileScreen.route();
-    //return BookingListScreen.route();
+      // return SplashScreen.route();
+      // return ProfileScreen.route();
+      return BookingListScreen.route();
 
     case '/main':
       return MainScreen.route();
