@@ -28,7 +28,7 @@ class ViewMenuBody extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircularProgressIndicator(
-                          color: kPrimaryColorDarker,
+                          backgroundColor: kPrimaryColorDarker,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 12.0),
