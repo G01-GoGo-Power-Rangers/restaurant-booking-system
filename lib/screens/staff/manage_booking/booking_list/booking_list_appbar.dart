@@ -11,16 +11,25 @@ class BookingListAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('Booking List'),
+      title: Text(
+        'Booking List',
+        style: TextStyle(color: Colors.black),
+      ),
       backgroundColor: kPrimaryColor,
       bottom: TabBar(
+        indicatorColor: kPrimaryColorDarker,
         tabs: <Widget>[
           Tab(
-            text: 'New',
+            child: Text(
+              'New',
+              style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
           ),
           Tab(
-            text: 'History',
-          )
+              child: Text(
+            'History',
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          ))
         ],
       ),
     );
