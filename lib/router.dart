@@ -33,6 +33,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/home':
       return HomeScreen.route();
+
+    case '/book':
+      return BookingScreen.route();
   }
   return null;
 }
