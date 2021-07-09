@@ -7,6 +7,7 @@ import 'package:restaurant_booking_system/screens/login_screen/login_screen.dart
 import 'package:restaurant_booking_system/screens/main_screen/main_screen.dart';
 import 'package:restaurant_booking_system/screens/register/register_screen.dart';
 import 'package:restaurant_booking_system/screens/splash_screen.dart';
+import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_details/booking_details_screen.dart';
 
 import 'screens/staff/manage_booking/booking_list/booking_list_screen.dart';
 
@@ -17,7 +18,8 @@ Route<dynamic> createRoute(settings) {
       // return HomeScreen.route();
       // return SplashScreen.route();
       // return ProfileScreen.route();
-      return BookingListScreen.route();
+      // return BookingListScreen.route();
+    return BookingDetailsScreen.route();
 
     case '/main':
       return MainScreen.route();

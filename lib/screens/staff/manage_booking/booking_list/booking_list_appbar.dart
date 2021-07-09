@@ -17,18 +17,24 @@ class BookingListAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: kPrimaryColor,
       bottom: TabBar(
+        unselectedLabelColor: Colors.grey,
+        labelColor: Colors.black,
         indicatorColor: kPrimaryColorDarker,
         tabs: <Widget>[
           Tab(
             child: Text(
               'New',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
           ),
           Tab(
               child: Text(
             'History',
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ))
         ],
       ),
