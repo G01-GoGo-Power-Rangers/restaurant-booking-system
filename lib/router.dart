@@ -15,11 +15,11 @@ Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
       // return BookingScreen.route();
-      // return HomeScreen.route();
-      // return SplashScreen.route();
-      // return ProfileScreen.route();
-      // return BookingListScreen.route();
-    return BookingDetailsScreen.route();
+      return HomeScreen.route();
+    // return SplashScreen.route();
+    // return ProfileScreen.route();
+    // return BookingListScreen.route();
+    // return BookingDetailsScreen.route();
 
     case '/main':
       return MainScreen.route();
