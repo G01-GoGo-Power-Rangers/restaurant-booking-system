@@ -65,7 +65,9 @@ class HomeScreenBody extends StatelessWidget {
                   children: [
                     InkWellButton(
                       title: 'BOOK',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/book');
+                      },
                     ),
                     InkWellButton(
                       title: 'MENU',

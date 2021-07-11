@@ -9,8 +9,8 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BookingScreenAppBar(),
-      body: BookingScreenBody(),
+      appBar: BookingAppBar(),
+      body: BookingBody(),
     );
   }
 }
