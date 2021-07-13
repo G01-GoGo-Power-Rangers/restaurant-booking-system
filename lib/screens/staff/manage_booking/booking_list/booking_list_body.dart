@@ -1,34 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_booking_system/viewmodels/booking_list_viewmodel.dart';
 
 class BookingListBody extends StatelessWidget {
-  //final List items;
-  //BookingListBody(this.items);
-  final staff = List<String>.generate(4, (i) => 'Staff 1 #${i + 1}');
-  final List<Widget> listview = [
-    Container(
-      child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => ListTile(
-              title: Text('arif'), subtitle: Text('Staff ${index + 1}')),
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: 2),
-    ),
-    Container(
-      child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => ListTile(
-              title: Text('Hasan'), subtitle: Text('Staff ${index + 1}')),
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: 2),
-    ),
-  ];
+  const BookingListBody({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: TabBarView(
-          children: listview,
-        ));
+    BookingListViewModel bookingListViewModel =
+        Provider.of<BookingListViewModel>(context);
+
+    return TabBarView(
+      children: bookingListViewModel.containers,
+    );
   }
 }
