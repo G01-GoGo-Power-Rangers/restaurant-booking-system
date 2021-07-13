@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/viewmodels/booking_list_viewmodel.dart';
@@ -22,12 +23,23 @@ void main() {
     child: MyApp(),
   ));
   // runApp(MyApp());
+=======
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/screens/wrapper.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+>>>>>>> 6650c59c6035b594b6e0bcce9c7847415aa73ca3
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       debugShowCheckedModeBanner: false,
       title: 'Restaurant Booking System',
       // theme: ThemeData(
@@ -36,5 +48,13 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: createRoute,
       initialRoute: '/',
     );
+=======
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Wrapper());
+>>>>>>> 6650c59c6035b594b6e0bcce9c7847415aa73ca3
   }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class User {
   String _id;
   String _username;
@@ -54,4 +55,10 @@ class User {
         'fullname': fullname,
         'usertype': usertype
       };
+=======
+class Customer {
+  final String uid;
+
+  Customer({this.uid});
+>>>>>>> 6650c59c6035b594b6e0bcce9c7847415aa73ca3
 }

@@ -1,10 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.restaurant_booking_system">
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="restaurant_booking_system"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
+=======
+   <application
+        android:label="restaurant_booking_system"
+        android:icon="@mipmap/ic_launcher">
+>>>>>>> 6650c59c6035b594b6e0bcce9c7847415aa73ca3
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
