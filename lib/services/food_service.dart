@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../dependencies.dart';
 import 'rest.dart';
 import '../models/food.dart';

@@ -9,7 +9,7 @@ class LoginViewModel extends ChangeNotifier {
   String _password;
   bool _showErrorMsg = false;
   bool _hidePassword = true;
-  User _user = User();
+  User _user;
 
   final userService = service<UserService>();
   // final UserService userService = service(); //same with declare
@@ -39,10 +39,14 @@ class LoginViewModel extends ChangeNotifier {
 
     if (user == null)
       showErrorMsg = true;
-    else {
+    else if (user.usertype == 'staff') {
       showErrorMsg = false;
       Navigator.pushNamedAndRemoveUntil(
-          context, '/home', ModalRoute.withName('/'));
+          context, '/booklist', ModalRoute.withName('/main'));
+    } else {
+      showErrorMsg = false;
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home', ModalRoute.withName('/main'));
     }
   }
 

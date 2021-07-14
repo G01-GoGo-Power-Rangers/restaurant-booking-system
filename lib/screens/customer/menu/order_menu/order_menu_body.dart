@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/constant.dart';
-import 'package:restaurant_booking_system/models/food.dart';
-import 'package:restaurant_booking_system/screens/customer/menu/menu_categories.dart';
-import 'package:restaurant_booking_system/viewmodels/view_menu_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/order_menu_viewmodel.dart';
 
+import '../../../../constant.dart';
 import '../food_card.dart';
+import '../menu_categories.dart';
 
-class ViewMenuBody extends StatelessWidget {
-  const ViewMenuBody({
-    Key key,
-  }) : super(key: key);
-
+class OrderMenuBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ViewMenuViewModel _viewMenuViewModel =
-        Provider.of<ViewMenuViewModel>(context);
+    OrderMenuViewModel _orderMenuViewModel =
+        Provider.of<OrderMenuViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +19,7 @@ class ViewMenuBody extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: _viewMenuViewModel.foodListFiltered == null
+            child: _orderMenuViewModel.foodListFiltered == null
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +39,7 @@ class ViewMenuBody extends StatelessWidget {
                     ),
                   )
                 : GridView.builder(
-                    itemCount: _viewMenuViewModel.foodListFiltered.length,
+                    itemCount: _orderMenuViewModel.foodListFiltered.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 30,
@@ -52,7 +47,7 @@ class ViewMenuBody extends StatelessWidget {
                       childAspectRatio: 0.9,
                     ),
                     itemBuilder: (context, index) => FoodCard(
-                      food: _viewMenuViewModel.foodListFiltered[index],
+                      food: _orderMenuViewModel.foodListFiltered[index],
                     ),
                   ),
           ),

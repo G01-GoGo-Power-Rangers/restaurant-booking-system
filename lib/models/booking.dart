@@ -7,6 +7,7 @@ class Booking {
   dynamic _price;
   String _table;
   String _userid;
+  String _customername;
 
   get id => _id;
   set id(value) => _id = value;
@@ -24,8 +25,10 @@ class Booking {
   set table(value) => _table = value;
   get userid => _userid;
   set userid(value) => _userid = value;
+  get customername => _customername;
+  set customername(value) => _customername = value;
 
-  Booking({id, date, time, status, person, price, table, userid})
+  Booking({id, date, time, status, person, price, table, userid, customername})
       : _id = id,
         _date = date,
         _time = time,
@@ -33,7 +36,8 @@ class Booking {
         _person = person,
         _price = price,
         _table = table,
-        _userid = userid;
+        _userid = userid,
+        _customername = customername;
 
   Booking.copy(Booking from)
       : this(
@@ -44,7 +48,8 @@ class Booking {
             person: from.person,
             price: from.price,
             table: from.table,
-            userid: from.userid);
+            userid: from.userid,
+            customername: from.customername);
 
   Booking.fromJson(Map<String, dynamic> json)
       : this(
@@ -55,7 +60,8 @@ class Booking {
             person: json['person'],
             price: json['price'],
             table: json['table'],
-            userid: json['userid']);
+            userid: json['userid'],
+            customername: json['customername']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -65,6 +71,7 @@ class Booking {
         'person': person,
         'price': price,
         'table': table,
-        'userid': userid
+        'userid': userid,
+        'customername': customername
       };
 }

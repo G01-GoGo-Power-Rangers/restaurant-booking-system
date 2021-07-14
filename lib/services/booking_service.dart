@@ -12,6 +12,18 @@ class BookingService {
     return jsonList.map((json) => Booking.fromJson(json)).toList();
   }
 
+  Future<List<Booking>> getNewBookingList() async {
+    final List jsonList = await restService.get('bookings/newbookinglist');
+    if (jsonList == null) return null;
+    return jsonList.map((json) => Booking.fromJson(json)).toList();
+  }
+
+  Future<List<Booking>> getHistoryBookingList() async {
+    final List jsonList = await restService.get('bookings/historybookinglist');
+    if (jsonList == null) return null;
+    return jsonList.map((json) => Booking.fromJson(json)).toList();
+  }
+
   Future<Booking> createNewBooking(Booking booking) async {
     final json = await restService.post('bookings/newbooking', data: booking);
     if (json == null) return null;
