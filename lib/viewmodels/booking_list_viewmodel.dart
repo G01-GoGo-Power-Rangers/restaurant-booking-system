@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_list/booking_list_body.dart';
+import 'package:restaurant_booking_system/models/booking.dart';
+import 'package:restaurant_booking_system/services/booking_service.dart';
+
+import '../dependencies.dart';
 
 class BookingListViewModel extends ChangeNotifier {
-  // int selectedIndex = 0;
-  // List<Widget> pages = <Widget>[
-  //   BookingListBody(
-  //     containers: [],
-  //   )
-  // ];
+  List<Booking> _newBookingList = [];
+  List<Booking> _historyBookingList = [];
+  List<Booking> _customerBookingList = [];
+
+  final bookingListService = service<BookingService>();
+
+  List<Booking> get newBookingList => _newBookingList;
+  set newBookingList(value) => _newBookingList = value;
+
+  List<Booking> get historyBookingList => _historyBookingList;
+  set historyBookingList(value) => _historyBookingList = value;
+
+  List<Booking> get customerBookingList => _customerBookingList;
+  set customerBookingList(value) => _customerBookingList = value;
+
   List<Widget> containers = <Widget>[
     Container(
       child: ListView.separated(
@@ -19,16 +31,46 @@ class BookingListViewModel extends ChangeNotifier {
     ),
     Container(
       child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => ListTile(
-              title: Text('Hasan'), subtitle: Text('Staff ${index + 1}')),
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: 1),
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) => ListTile(
+            title: Text('Hasan'), subtitle: Text('Staff ${index + 1}')),
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
     ),
   ];
 
-  // void testContainers(int index) {
-  //   selectedIndex = index;
-  //   notifyListeners();
+  // List<Booking> nullFilBookingList(List<Booking> list) {
+  //   list = [];
+  //   list.add(Booking(
+  //       id: '',
+  //       date: DateTime.now(),
+  //       person: "Received no data",
+  //       time: DateTime.now(),
+  //       price: 0,
+  //       table: 'Received no data',
+  //       userid: null));
   // }
+
+  Future<List<Booking>> getNewBookingList() async {
+    newBookingList = await bookingListService.getNewBookingList();
+
+    return newBookingList;
+  }
+
+  Future<List<Booking>> getHistoryBookingList() async {
+    // customerBookingList.forEach((booking) {
+    //   if (booking.status == 'accepted') historyBookingList.add(booking);
+    // });
+    historyBookingList = await bookingListService.getHistoryBookingList();
+
+    return historyBookingList;
+  }
+
+  Future<List<Booking>> getCustomerBookingList() async {
+    customerBookingList = await bookingListService.getBookingList();
+    // if (_customerBookingList == null)
+    //   _customerBookingList = nullFilBookingList(_customerBookingList);
+    // notifyListeners();
+    return customerBookingList;
+  }
 }

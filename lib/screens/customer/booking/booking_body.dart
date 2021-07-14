@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 
 class BookingBody extends StatefulWidget {
   const BookingBody({Key key}) : super(key: key);
@@ -9,38 +11,9 @@ class BookingBody extends StatefulWidget {
 }
 
 class _BookingBodyState extends State<BookingBody> {
-  String _selectedDate = 'Choose a date';
-  String _selectedTime = 'Choose a time';
-  String _tableBoxValue = '1';
-  double _personSliderValue = 1;
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime d = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2015),
-      lastDate: DateTime(2042),
-    );
-    if (d != null)
-      setState(() {
-        _selectedDate = new DateFormat.yMMMMd("en_US").format(d);
-      });
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay d = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-    if (d != null)
-      setState(() {
-        _selectedTime = d.format(context);
-      });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // BookingViewModel _bookingViewModel = Provider.of<BookingViewModel>(context);
+    BookingViewModel bookingViewModel = Provider.of<BookingViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,25 +57,26 @@ class _BookingBodyState extends State<BookingBody> {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: Padding(
-                    padding: const EdgeInsets.all(3.0),
+                    padding: const EdgeInsets.only(
+                        top: 3.0, bottom: 3.0, right: 0, left: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         InkWell(
                           child: Text(
-                            _selectedDate,
+                            bookingViewModel.selectedDate,
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Color(0xFF000000)),
                           ),
                           onTap: () {
-                            _selectDate(context);
+                            bookingViewModel.selectDate(context);
                           },
                         ),
                         IconButton(
                             icon: Icon(Icons.calendar_today),
                             tooltip: 'Tap to choose a date',
                             onPressed: () {
-                              _selectDate(context);
+                              bookingViewModel.selectDate(context);
                             }),
                       ],
                     ),
@@ -121,25 +95,26 @@ class _BookingBodyState extends State<BookingBody> {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(5))),
                   child: Padding(
-                    padding: const EdgeInsets.all(3.0),
+                    padding: const EdgeInsets.only(
+                        top: 3.0, bottom: 3.0, right: 0, left: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         InkWell(
                           child: Text(
-                            _selectedTime,
+                            bookingViewModel.selectedTime,
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Color(0xFF000000)),
                           ),
                           onTap: () {
-                            _selectTime(context);
+                            bookingViewModel.selectTime(context);
                           },
                         ),
                         IconButton(
                             icon: Icon(Icons.access_time),
                             tooltip: 'Tap to choose a time',
                             onPressed: () {
-                              _selectTime(context);
+                              bookingViewModel.selectTime(context);
                             }),
                       ],
                     ),
@@ -159,15 +134,13 @@ class _BookingBodyState extends State<BookingBody> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 20.0),
           child: Slider(
-            value: _personSliderValue,
+            value: bookingViewModel.personSliderValue,
             min: 0,
             max: 12,
             divisions: 12,
-            label: _personSliderValue.round().toString(),
+            label: bookingViewModel.personSliderValue.round().toString(),
             onChanged: (double value) {
-              setState(() {
-                _personSliderValue = value;
-              });
+              bookingViewModel.personSliderValue = value;
             },
           ),
         ),
@@ -207,31 +180,17 @@ class _BookingBodyState extends State<BookingBody> {
                       style: TextStyle(color: Color(0xFF000000)),
                     ),
                     onTap: () {
-                      _selectDate(context);
+                      bookingViewModel.selectDate(context);
                     },
                   ),
                   DropdownButton<String>(
-                    value: _tableBoxValue,
+                    value: bookingViewModel.tableBoxValue,
                     icon: Icon(Icons.arrow_drop_down),
                     onChanged: (String newValue) {
-                      setState(() {
-                        _tableBoxValue = newValue;
-                      });
+                      bookingViewModel.tableBoxValue = newValue;
                     },
-                    items: <String>[
-                      '1',
-                      '2',
-                      '3',
-                      '4',
-                      '5',
-                      '6',
-                      '7',
-                      '8',
-                      '9',
-                      '10',
-                      '11',
-                      '12',
-                    ].map<DropdownMenuItem<String>>((String value) {
+                    items: bookingViewModel.items
+                        .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -246,17 +205,22 @@ class _BookingBodyState extends State<BookingBody> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
           child: Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: kPrimaryColorDarker,
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-                minimumSize: Size(310.0, 35.0),
-                textStyle:
-                    TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              ),
-              child: Text('CONFIRM'),
-              onPressed: () {},
-            ),
+            child: Consumer<LoginViewModel>(builder: (context, user, child) {
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColorDarker,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                  minimumSize: Size(310.0, 35.0),
+                  textStyle:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+                child: Text('CONFIRM'),
+                onPressed: () {
+                  bookingViewModel.setBooking(context, user.user);
+                },
+              );
+            }),
           ),
         ),
       ],

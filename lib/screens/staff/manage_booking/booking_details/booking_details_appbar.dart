@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/widget/appbar_widget.dart';
 
 class BookingDetailsAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -8,12 +9,13 @@ class BookingDetailsAppBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(
-        'Booking Details',
-        style: TextStyle(color: Colors.black),
-      ),
-      backgroundColor: kPrimaryColor,
-    );
+    return AppBarCustom("Booking Details", context);
+    // return AppBar(
+    //   title: Text(
+    //     'Booking Details',
+    //     style: TextStyle(color: Colors.black),
+    //   ),
+    //   backgroundColor: kPrimaryColor,
+    // );
   }
 }

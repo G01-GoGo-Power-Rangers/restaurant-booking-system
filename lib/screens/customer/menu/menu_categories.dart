@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/viewmodels/view_menu_view_model.dart';
+import 'package:restaurant_booking_system/viewmodels/view_menu_viewmodel.dart';
 
 class Categories extends StatefulWidget {
   @override

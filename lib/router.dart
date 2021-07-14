@@ -9,13 +9,16 @@ import 'package:restaurant_booking_system/screens/register/register_screen.dart'
 import 'package:restaurant_booking_system/screens/splash_screen.dart';
 import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_details/booking_details_screen.dart';
 
+import 'screens/customer/menu/order_menu/order_menu_screen.dart';
 import 'screens/staff/manage_booking/booking_list/booking_list_screen.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
-      // return BookingScreen.route();
-      return HomeScreen.route();
+      return OrderMenuScreen.route();
+    // return MainScreen.route();
+    // return BookingScreen.route();
+    // return HomeScreen.route();
     // return SplashScreen.route();
     // return ProfileScreen.route();
     // return BookingListScreen.route();
@@ -38,6 +41,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/book':
       return BookingScreen.route();
+
+    case '/booklist':
+      return BookingListScreen.route();
   }
   return null;
 }
