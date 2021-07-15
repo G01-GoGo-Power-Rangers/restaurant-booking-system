@@ -1,9 +1,8 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_list/booking_list_body.dart';
-// import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_list/booking_list_body.dart';
+import 'package:restaurant_booking_system/widget/drawer_widget.dart';
 
 import 'booking_list_appbar.dart';
 
@@ -15,6 +14,10 @@ class BookingListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
-        child: Scaffold(appBar: BookingListAppBar(), body: BookingListBody()));
+        child: Scaffold(
+          appBar: BookingListAppBar(),
+          body: BookingListBody(),
+          drawer: CustomDrawer(),
+        ));
   }
 }

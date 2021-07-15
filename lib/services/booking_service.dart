@@ -35,4 +35,16 @@ class BookingService {
     if (jsonList == null) return null;
     return jsonList.map((json) => Booking.fromJson(json)).toList();
   }
+
+  Future<Booking> getBooking(String bookingid) async {
+    final json = await restService.get('bookings/$bookingid');
+    if (json == null) return null;
+    return Booking.fromJson(json);
+  }
+
+  Future<Booking> updateBookingStatus(String bookingid) async {
+    final json = await restService.get('bookings/bookingstatus/$bookingid');
+    if (json == null) return null;
+    return Booking.fromJson(json);
+  }
 }

@@ -5,14 +5,16 @@ class User {
   String _password;
   String _fullname;
   String _usertype;
+  String _photo;
 
-  User({id, username, email, password, fullname, usertype})
+  User({id, username, email, password, fullname, usertype, photo})
       : this._id = id,
         this._username = username,
         this._email = email,
         this._password = password,
         this._fullname = fullname,
-        this._usertype = usertype;
+        this._usertype = usertype,
+        this._photo = photo;
 
   get id => _id;
   set id(value) => _id = value;
@@ -26,6 +28,8 @@ class User {
   set fullname(value) => _fullname = value;
   get usertype => _usertype;
   set usertype(value) => _usertype = value;
+  get photo => _photo;
+  set photo(value) => _photo = value;
 
   User.copy(User from)
       : this(
@@ -35,6 +39,7 @@ class User {
           password: from.password,
           fullname: from.fullname,
           usertype: from.usertype,
+          photo: from.photo,
         );
 
   User.fromJson(Map<String, dynamic> json)
@@ -44,7 +49,8 @@ class User {
             email: json['email'],
             password: json['password'],
             usertype: json['usertype'],
-            fullname: json['fullname']);
+            fullname: json['fullname'],
+            photo: json['photo']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -52,6 +58,7 @@ class User {
         'email': email,
         'password': password,
         'fullname': fullname,
-        'usertype': usertype
+        'usertype': usertype,
+        'photo': photo
       };
 }
