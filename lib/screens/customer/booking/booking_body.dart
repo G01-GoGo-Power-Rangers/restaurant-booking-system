@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
 import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/order_menu_viewmodel.dart';
 
 class BookingBody extends StatefulWidget {
   const BookingBody({Key key}) : super(key: key);
@@ -13,7 +14,9 @@ class BookingBody extends StatefulWidget {
 class _BookingBodyState extends State<BookingBody> {
   @override
   Widget build(BuildContext context) {
-    BookingViewModel bookingViewModel = Provider.of<BookingViewModel>(context);
+    BookingViewModel _bookingViewModel = Provider.of<BookingViewModel>(context);
+    OrderMenuViewModel _orderMenuViewModel =
+        Provider.of<OrderMenuViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,19 +67,19 @@ class _BookingBodyState extends State<BookingBody> {
                       children: <Widget>[
                         InkWell(
                           child: Text(
-                            bookingViewModel.selectedDate,
+                            _bookingViewModel.selectedDate,
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Color(0xFF000000)),
                           ),
                           onTap: () {
-                            bookingViewModel.selectDate(context);
+                            _bookingViewModel.selectDate(context);
                           },
                         ),
                         IconButton(
                             icon: Icon(Icons.calendar_today),
                             tooltip: 'Tap to choose a date',
                             onPressed: () {
-                              bookingViewModel.selectDate(context);
+                              _bookingViewModel.selectDate(context);
                             }),
                       ],
                     ),
@@ -102,19 +105,19 @@ class _BookingBodyState extends State<BookingBody> {
                       children: <Widget>[
                         InkWell(
                           child: Text(
-                            bookingViewModel.selectedTime,
+                            _bookingViewModel.selectedTime,
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Color(0xFF000000)),
                           ),
                           onTap: () {
-                            bookingViewModel.selectTime(context);
+                            _bookingViewModel.selectTime(context);
                           },
                         ),
                         IconButton(
                             icon: Icon(Icons.access_time),
                             tooltip: 'Tap to choose a time',
                             onPressed: () {
-                              bookingViewModel.selectTime(context);
+                              _bookingViewModel.selectTime(context);
                             }),
                       ],
                     ),
@@ -134,13 +137,13 @@ class _BookingBodyState extends State<BookingBody> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 20.0),
           child: Slider(
-            value: bookingViewModel.personSliderValue,
+            value: _bookingViewModel.personSliderValue,
             min: 0,
             max: 12,
             divisions: 12,
-            label: bookingViewModel.personSliderValue.round().toString(),
+            label: _bookingViewModel.personSliderValue.round().toString(),
             onChanged: (double value) {
-              bookingViewModel.personSliderValue = value;
+              _bookingViewModel.personSliderValue = value;
             },
           ),
         ),
@@ -180,16 +183,16 @@ class _BookingBodyState extends State<BookingBody> {
                       style: TextStyle(color: Color(0xFF000000)),
                     ),
                     onTap: () {
-                      bookingViewModel.selectDate(context);
+                      _bookingViewModel.selectDate(context);
                     },
                   ),
                   DropdownButton<String>(
-                    value: bookingViewModel.tableBoxValue,
+                    value: _bookingViewModel.tableBoxValue,
                     icon: Icon(Icons.arrow_drop_down),
                     onChanged: (String newValue) {
-                      bookingViewModel.tableBoxValue = newValue;
+                      _bookingViewModel.tableBoxValue = newValue;
                     },
-                    items: bookingViewModel.items
+                    items: _bookingViewModel.items
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -217,7 +220,9 @@ class _BookingBodyState extends State<BookingBody> {
                 ),
                 child: Text('CONFIRM'),
                 onPressed: () {
-                  bookingViewModel.setBooking(context, user.user);
+                  _orderMenuViewModel.getFoodList();
+                  _bookingViewModel.setBooking(context, user.user);
+                  Navigator.pushNamed(context, '/ordermenu');
                 },
               );
             }),

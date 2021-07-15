@@ -102,8 +102,8 @@ class BookingViewModel extends ChangeNotifier {
       booking.userid = user.id;
       booking.customername = user.fullname;
 
-      final result = await bookingService.createNewBooking(booking);
-      _booking = result;
+      // final result = await bookingService.createNewBooking(booking);
+      // _booking = result;
       // print(booking.customername);
       // print(booking.date);
       // print(booking.time);

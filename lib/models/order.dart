@@ -33,13 +33,13 @@ class Order {
       : this(
             id: json['id'],
             bookingid: json['bookingid'],
-            totalPrice: json['totalPrice'],
+            totalPrice: json['totalprice'],
             foods: json['foods']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'bookingid': bookingid,
-        'totalPrice': totalPrice,
+        'totalprice': totalPrice,
         'foods': [...foods]
       };
 }

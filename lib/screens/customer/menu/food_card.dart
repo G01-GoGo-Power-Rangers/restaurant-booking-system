@@ -3,12 +3,18 @@ import 'package:restaurant_booking_system/models/food.dart';
 
 class FoodCard extends StatelessWidget {
   final Food food;
+  final bool isOrder = true;
 
   FoodCard({this.food});
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print('click'),
+      onTap: () {
+        if (isOrder)
+          print('isOrder');
+        else
+          print('not order');
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

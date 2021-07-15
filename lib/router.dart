@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/models/booking.dart';
 import 'package:restaurant_booking_system/screens/customer/booking/booking_screen.dart';
 import 'package:restaurant_booking_system/screens/customer/menu/view_menu/view_menu_screen.dart';
 import 'package:restaurant_booking_system/screens/home_screen/home_screen.dart';
@@ -15,8 +16,8 @@ import 'screens/staff/manage_booking/booking_list/booking_list_screen.dart';
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
-      return OrderMenuScreen.route();
-    // return MainScreen.route();
+      // return OrderMenuScreen.route();
+      return MainScreen.route();
     // return BookingScreen.route();
     // return HomeScreen.route();
     // return SplashScreen.route();
@@ -36,6 +37,9 @@ Route<dynamic> createRoute(settings) {
     case '/menu':
       return MenuScreen.route();
 
+    case '/ordermenu':
+      return OrderMenuScreen.route();
+
     case '/home':
       return HomeScreen.route();
 
@@ -44,6 +48,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/booklist':
       return BookingListScreen.route();
+
+    case '/bookdetails':
+      return BookingDetailsScreen.route(booking: settings.arguments as Booking);
   }
   return null;
 }
