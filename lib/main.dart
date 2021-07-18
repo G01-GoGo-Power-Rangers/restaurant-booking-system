@@ -1,22 +1,49 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurant_booking_system/screens/wrapper.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_booking_system/viewmodels/booking_list_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
+import 'package:restaurant_booking_system/router.dart';
+import 'package:restaurant_booking_system/viewmodels/register_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+import 'dependencies.dart' as di;
+import 'viewmodels/booking_viewmodel.dart';
+import 'viewmodels/order_food_viewmodel.dart';
+
+void main() {
+  di.init();
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<LoginViewModel>(create: (_) => LoginViewModel()),
+      ChangeNotifierProvider<MenuViewModel>(create: (_) => MenuViewModel()),
+      ChangeNotifierProvider<RegisterViewModel>(
+          create: (_) => RegisterViewModel()),
+      ChangeNotifierProvider<HomeScreenViewModel>(
+          create: (_) => HomeScreenViewModel()),
+      ChangeNotifierProvider<BookingListViewModel>(
+          create: (_) => BookingListViewModel()),
+      ChangeNotifierProvider<BookingViewModel>(
+          create: (_) => BookingViewModel()),
+      ChangeNotifierProvider<OrderFoodViewModel>(
+          create: (_) => OrderFoodViewModel())
+    ],
+    child: MyApp(),
+  ));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Wrapper());
+      debugShowCheckedModeBanner: false,
+      title: 'Restaurant Booking System',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      onGenerateRoute: createRoute,
+      initialRoute: '/',
+    );
   }
 }
