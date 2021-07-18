@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_details/booking_details_screen.dart';
 import 'package:restaurant_booking_system/viewmodels/booking_list_viewmodel.dart';
 
 class BookingListBody extends StatelessWidget {

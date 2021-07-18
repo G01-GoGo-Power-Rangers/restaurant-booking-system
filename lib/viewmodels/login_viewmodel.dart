@@ -9,7 +9,7 @@ class LoginViewModel extends ChangeNotifier {
   String _password;
   bool _showErrorMsg = false;
   bool _hidePassword = true;
-  User _user;
+  User _user = User();
 
   final userService = service<UserService>();
   // final UserService userService = service(); //same with declare

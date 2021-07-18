@@ -18,7 +18,7 @@ class Food {
 
   get id => _id;
   set id(value) => _id = value;
-  get foodname => _foodname;
+  String get foodname => _foodname;
   set foodname(value) => _foodname = value;
   get foodprice => _foodprice;
   set foodprice(value) {

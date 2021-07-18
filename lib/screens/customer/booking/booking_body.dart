@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
 import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
-import 'package:restaurant_booking_system/viewmodels/order_menu_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
 class BookingBody extends StatefulWidget {
   const BookingBody({Key key}) : super(key: key);
@@ -15,8 +15,7 @@ class _BookingBodyState extends State<BookingBody> {
   @override
   Widget build(BuildContext context) {
     BookingViewModel _bookingViewModel = Provider.of<BookingViewModel>(context);
-    OrderMenuViewModel _orderMenuViewModel =
-        Provider.of<OrderMenuViewModel>(context);
+    MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,9 +219,13 @@ class _BookingBodyState extends State<BookingBody> {
                 ),
                 child: Text('CONFIRM'),
                 onPressed: () {
-                  _orderMenuViewModel.getFoodList();
-                  _bookingViewModel.setBooking(context, user.user);
-                  Navigator.pushNamed(context, '/ordermenu');
+                  if (_bookingViewModel.createBooking(context, user.user)) {
+                    _menuViewModel.getFoodList();
+                    _menuViewModel.isOrdering = true;
+                    Navigator.pushNamed(context, '/ordermenu');
+                  } else {
+                    _bookingViewModel.showAlertDialog(context);
+                  }
                 },
               );
             }),

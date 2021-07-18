@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/models/food.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/order_food_viewmodel.dart';
 
 class FoodCard extends StatelessWidget {
   final Food food;
-  final bool isOrder = true;
 
   FoodCard({this.food});
   @override
   Widget build(BuildContext context) {
+    MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);
+    OrderFoodViewModel _orderFoodViewModel =
+        Provider.of<OrderFoodViewModel>(context);
+
     return InkWell(
       onTap: () {
-        if (isOrder)
-          print('isOrder');
-        else
-          print('not order');
+        if (_menuViewModel.isOrdering) {
+          _orderFoodViewModel.selectedFood = food;
+          Navigator.pushNamed(context, '/orderfood');
+        } else
+          return null;
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -76,42 +76,60 @@ class BookingViewModel extends ChangeNotifier {
     return person * 10.0;
   }
 
-  setBooking(BuildContext context, User user) async {
+  createBooking(BuildContext context, User user) {
+    if (isBookingDetailsFilled()) {
+      setBookingDetails(user);
+      insertBooking();
+      print(booking.customername);
+      print(booking.date);
+      print(booking.time);
+      print(booking.person);
+      print(booking.table);
+      print(booking.price);
+      print(booking.status);
+      print(booking.userid);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool isBookingDetailsFilled() {
     if (selectedDate == 'Choose a date' ||
         selectedTime == 'Choose a time' ||
         personSliderValue == 0 ||
-        tableBoxValue == 'Choose') {
-      showDialog(
-          context: context,
-          builder: (context) => CustomAlertDialog(
-                title: 'Booking Information',
-                content: 'Please complete the booking information',
-                items: [
-                  TextButton(
-                      onPressed: () => Navigator.pop(context, 'ok'),
-                      child: Text('OK'))
-                ],
-              ));
-    } else {
-      booking.date = selectedDate.toString();
-      booking.time = selectedTime.toString();
-      booking.person = personSliderValue.toInt();
-      booking.table = tableBoxValue;
-      booking.price = setBookingPrice(personSliderValue.toInt());
-      booking.status = 'processed';
-      booking.userid = user.id;
-      booking.customername = user.fullname;
+        tableBoxValue == 'Choose') return false;
 
-      // final result = await bookingService.createNewBooking(booking);
-      // _booking = result;
-      // print(booking.customername);
-      // print(booking.date);
-      // print(booking.time);
-      // print(booking.person);
-      // print(booking.table);
-      // print(booking.price);
-      // print(booking.status);
-      // print(booking.userid);
-    }
+    return true;
+  }
+
+  setBookingDetails(User user) {
+    booking.date = selectedDate.toString();
+    booking.time = selectedTime.toString();
+    booking.person = personSliderValue.toInt();
+    booking.table = tableBoxValue;
+    booking.price = setBookingPrice(personSliderValue.toInt());
+    booking.status = 'processed';
+    booking.userid = user.id;
+    booking.customername = user.fullname;
+  }
+
+  showAlertDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => CustomAlertDialog(
+              title: 'Booking Information',
+              content: 'Please complete the booking information',
+              items: [
+                TextButton(
+                    onPressed: () => Navigator.pop(context, 'ok'),
+                    child: Text('OK'))
+              ],
+            ));
+  }
+
+  insertBooking() async {
+    final result = await bookingService.createNewBooking(booking);
+    _booking = result;
   }
 }

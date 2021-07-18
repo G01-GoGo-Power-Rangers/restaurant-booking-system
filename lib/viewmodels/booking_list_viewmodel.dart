@@ -10,7 +10,7 @@ class BookingListViewModel extends ChangeNotifier {
   List<Booking> _newBookingList = [];
   List<Booking> _historyBookingList = [];
   List<Booking> _customerBookingList = [];
-  Order _userOrder;
+  Order _userOrder = Order();
 
   final bookingListService = service<BookingService>();
   final orderService = service<OrderService>();
