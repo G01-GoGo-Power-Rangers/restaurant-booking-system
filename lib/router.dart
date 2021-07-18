@@ -20,13 +20,13 @@ Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
       // return OrderMenuScreen.route();
-      return MainScreen.route();
-    // return OrderSuccessScreen.route();
-    // return CartScreen.route();
-    // return OrderFoodScreen.route();
-    // return BookingScreen.route();
-    // return HomeScreen.route();
-    // return SplashScreen.route();
+      // return MainScreen.route();
+      // return OrderSuccessScreen.route();
+      // return CartScreen.route();
+      // return OrderFoodScreen.route();
+      // return BookingScreen.route();
+      // return HomeScreen.route();
+      return SplashScreen.route();
     // return ProfileScreen.route();
     // return BookingListScreen.route();
     // return BookingDetailsScreen.route();
