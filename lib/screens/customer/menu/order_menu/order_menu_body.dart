@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/viewmodels/order_menu_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
 import '../../../../constant.dart';
 import '../food_card.dart';
@@ -9,8 +9,7 @@ import '../menu_categories.dart';
 class OrderMenuBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    OrderMenuViewModel _orderMenuViewModel =
-        Provider.of<OrderMenuViewModel>(context);
+    MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +18,7 @@ class OrderMenuBody extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: _orderMenuViewModel.foodListFiltered == null
+            child: _menuViewModel.foodListFiltered == null
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +38,7 @@ class OrderMenuBody extends StatelessWidget {
                     ),
                   )
                 : GridView.builder(
-                    itemCount: _orderMenuViewModel.foodListFiltered.length,
+                    itemCount: _menuViewModel.foodListFiltered.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 30,
@@ -47,7 +46,7 @@ class OrderMenuBody extends StatelessWidget {
                       childAspectRatio: 0.9,
                     ),
                     itemBuilder: (context, index) => FoodCard(
-                      food: _orderMenuViewModel.foodListFiltered[index],
+                      food: _menuViewModel.foodListFiltered[index],
                     ),
                   ),
           ),

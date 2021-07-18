@@ -51,7 +51,7 @@ class BookingDetailsBody extends StatelessWidget {
                   // title: Text(
                   //     'Total Price: RM${(booking.price + snapshot.data.totalPrice).ro}',
                   title: Text(
-                      'Total Price: RM ${(booking.price + snapshot.data.totalPrice).round().toString()}',
+                      'Total Price: RM ${(booking.price + snapshot.data.totalPrice).toStringAsFixed(2)}',
                       style: TextStyle(fontSize: 20)),
                 ),
               ),
@@ -62,16 +62,21 @@ class BookingDetailsBody extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: ListView.builder(
-                      itemCount: snapshot.data.foods.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                            child: ListTile(
-                          title: Text(
-                              '${snapshot.data.foods[index]['name']} \t X${snapshot.data.foods[index]['quantity']}',
-                              style: TextStyle(fontSize: 20)),
-                        ));
-                      })),
+                child: ListView.builder(
+                    itemCount: snapshot.data.foods.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                          child: ListTile(
+                        trailing: Text(
+                            'X${snapshot.data.foods[index]['quantity']}',
+                            style: TextStyle(fontSize: 20)),
+                        title: Text('${snapshot.data.foods[index]['name']}',
+                            style: TextStyle(fontSize: 20)),
+                        subtitle: Text(
+                            'Notes: ${snapshot.data.foods[index]['instruction'] != '' ? snapshot.data.foods[index]['instruction'] : 'None'}'),
+                      ));
+                    }),
+              ),
               booking.status == 'processed'
                   ? ElevatedButton(
                       onPressed: () {

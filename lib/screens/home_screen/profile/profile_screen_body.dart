@@ -10,6 +10,7 @@ class ProfileScreenBody extends StatelessWidget {
     HomeScreenViewModel homeScreenViewModel =
         Provider.of<HomeScreenViewModel>(context);
     LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
+
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [

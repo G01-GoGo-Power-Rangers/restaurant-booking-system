@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'order_menu_apbar.dart';
+import 'order_menu_appbar.dart';
 import 'order_menu_body.dart';
 
 class OrderMenuScreen extends StatelessWidget {
@@ -9,9 +9,12 @@ class OrderMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: OrderMenuAppBar(),
-      body: OrderMenuBody(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: OrderMenuAppBar(),
+        body: OrderMenuBody(),
+      ),
     );
   }
 }

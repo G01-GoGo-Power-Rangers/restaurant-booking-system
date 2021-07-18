@@ -3,13 +3,17 @@ import 'package:restaurant_booking_system/dependencies.dart';
 import 'package:restaurant_booking_system/models/food.dart';
 import 'package:restaurant_booking_system/services/food_service.dart';
 
-class OrderMenuViewModel extends ChangeNotifier {
+class MenuViewModel extends ChangeNotifier {
   final FoodService foodservice = service();
 
   List<String> categories = ["Breakfast", "Lunch", "Dinner"];
   List<Food> foodList;
   List<Food> foodListFiltered;
   int selectedIndex = 0;
+  bool _isOrdering = false;
+
+  get isOrdering => _isOrdering;
+  set isOrdering(value) => _isOrdering = value;
 
   chooseCategory(int index) {
     selectedIndex = index;

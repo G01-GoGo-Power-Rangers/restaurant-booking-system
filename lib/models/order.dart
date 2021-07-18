@@ -2,7 +2,7 @@ class Order {
   String _id = '';
   String _bookingid = '';
   dynamic _totalPrice;
-  List<Map> _foods;
+  List<dynamic> _foods;
 
   get id => _id;
   set id(value) => _id = value;
@@ -13,14 +13,14 @@ class Order {
   get totalPrice => _totalPrice;
   set totalPrice(value) => _totalPrice = value;
 
-  List<Map> get foods => _foods;
-  set foods(List<Map> value) => _foods = [...value];
+  List<dynamic> get foods => _foods;
+  set foods(List<dynamic> value) => _foods = value;
 
   Order({id, bookingid, totalPrice, foods})
       : _id = id,
         _bookingid = bookingid,
         _totalPrice = totalPrice,
-        _foods = [...foods];
+        _foods = foods;
 
   Order.copy(Order from)
       : this(
@@ -40,6 +40,6 @@ class Order {
         'id': id,
         'bookingid': bookingid,
         'totalprice': totalPrice,
-        'foods': [...foods]
+        'foods': foods
       };
 }
