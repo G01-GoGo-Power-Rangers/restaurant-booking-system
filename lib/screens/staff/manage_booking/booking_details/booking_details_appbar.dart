@@ -9,6 +9,7 @@ class BookingDetailsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: IconThemeData(color: Colors.black),
       title: Text(
         'Booking Details',
         style: TextStyle(color: Colors.black),

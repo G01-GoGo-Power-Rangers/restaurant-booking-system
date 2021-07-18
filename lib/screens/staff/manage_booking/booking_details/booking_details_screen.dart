@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_booking_system/models/booking.dart';
 import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_details/booking_details_appbar.dart';
 import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_details/booking_details_body.dart';
+import 'package:restaurant_booking_system/widget/drawer_widget.dart';
 
-class BookingDetailsScreen extends StatelessWidget
-    implements PreferredSizeWidget {
-  Size get preferredSize => Size.fromHeight(60.0);
-  const BookingDetailsScreen({Key key}) : super(key: key);
+class BookingDetailsScreen extends StatelessWidget {
+  final Booking _booking;
 
-  static Route route() =>
-      MaterialPageRoute(builder: (context) => BookingDetailsScreen());
+  get booking => _booking;
+
+  BookingDetailsScreen({Booking booking}) : _booking = booking;
+
+  static Route route({Booking booking}) => MaterialPageRoute(
+      builder: (context) => BookingDetailsScreen(booking: booking));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BookingDetailsAppBar(),
-      body: BookingDetailsBody(),
+      body: BookingDetailsBody(booking: booking),
+      drawer: CustomDrawer(),
     );
   }
 }

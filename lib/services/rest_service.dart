@@ -5,6 +5,8 @@ import 'package:restaurant_booking_system/services/rest.dart';
 class RestService implements Rest {
   static const String _baseUrl =
       'https://us-central1-restaurant-booking-syste-a4ca7.cloudfunctions.net/api';
+  // static const String _baseUrl =
+  //     'http://10.0.2.2:5001/restaurant-booking-syste-a4ca7/us-central1/api';
 
   Future get(String endpoint) async {
     final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));

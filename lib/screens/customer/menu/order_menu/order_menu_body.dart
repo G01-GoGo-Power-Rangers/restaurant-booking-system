@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/constant.dart';
-import 'package:restaurant_booking_system/screens/customer/menu/menu_categories.dart';
 import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
+import '../../../../constant.dart';
 import '../food_card.dart';
+import '../menu_categories.dart';
 
-class ViewMenuBody extends StatelessWidget {
-  const ViewMenuBody({
-    Key key,
-  }) : super(key: key);
-
+class OrderMenuBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/viewmodels/view_menu_view_model.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
-    ViewMenuViewModel vMenuViewModel = Provider.of<ViewMenuViewModel>(context);
+    MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Center(
@@ -18,29 +18,29 @@ class _CategoriesState extends State<Categories> {
           height: 25,
           child: ListView.builder(
             itemBuilder: (context, index) =>
-                _buildCategory(vMenuViewModel, index),
+                _buildCategory(_menuViewModel, index),
             scrollDirection: Axis.horizontal,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: vMenuViewModel.categories.length,
+            itemCount: _menuViewModel.categories.length,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildCategory(ViewMenuViewModel vMenuViewModel, int index) {
+  Widget _buildCategory(MenuViewModel menuViewModel, int index) {
     return GestureDetector(
-      onTap: () => vMenuViewModel.chooseCategory(index),
+      onTap: () => menuViewModel.chooseCategory(index),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              vMenuViewModel.categories[index],
+              menuViewModel.categories[index],
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: vMenuViewModel.selectedIndex == index
+                  color: menuViewModel.selectedIndex == index
                       ? Colors.black
                       : Colors.grey),
             ),
@@ -48,7 +48,7 @@ class _CategoriesState extends State<Categories> {
               margin: EdgeInsets.only(top: 5),
               height: 2,
               width: 25,
-              color: vMenuViewModel.selectedIndex == index
+              color: menuViewModel.selectedIndex == index
                   ? Colors.black
                   : Colors.white,
             ),

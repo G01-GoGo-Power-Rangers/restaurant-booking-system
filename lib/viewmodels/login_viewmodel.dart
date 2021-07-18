@@ -39,10 +39,14 @@ class LoginViewModel extends ChangeNotifier {
 
     if (user == null)
       showErrorMsg = true;
-    else {
+    else if (user.usertype == 'staff') {
       showErrorMsg = false;
       Navigator.pushNamedAndRemoveUntil(
-          context, '/home', ModalRoute.withName('/'));
+          context, '/booklist', ModalRoute.withName('/main'));
+    } else {
+      showErrorMsg = false;
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/home', ModalRoute.withName('/main'));
     }
   }
 

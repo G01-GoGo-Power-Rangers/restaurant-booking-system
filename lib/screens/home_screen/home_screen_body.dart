@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
-import 'package:restaurant_booking_system/viewmodels/view_menu_view_model.dart';
+import 'package:restaurant_booking_system/viewmodels/menu_viewmodel.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({
@@ -11,8 +11,7 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ViewMenuViewModel viewMenuViewModel =
-        Provider.of<ViewMenuViewModel>(context);
+    MenuViewModel _menuViewModel = Provider.of<MenuViewModel>(context);
 
     LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
 
@@ -72,7 +71,7 @@ class HomeScreenBody extends StatelessWidget {
                     InkWellButton(
                       title: 'MENU',
                       onTap: () {
-                        viewMenuViewModel.getFoodList();
+                        _menuViewModel.getFoodList();
                         Navigator.pushNamed(context, '/menu');
                       },
                     ),
