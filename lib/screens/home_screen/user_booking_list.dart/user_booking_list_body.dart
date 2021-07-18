@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
+import 'package:restaurant_booking_system/models/booking.dart';
+import 'package:restaurant_booking_system/models/user.dart';
+import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 
 import '../../../constant.dart';
@@ -9,10 +11,12 @@ class UserBookingListBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
-    BookingViewModel _bookingViewModel = Provider.of<BookingViewModel>(context);
+    HomeScreenViewModel _homeScreenViewModel =
+        Provider.of<HomeScreenViewModel>(context);
 
     Size size = MediaQuery.of(context).size;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
           height: size.height * 0.2,
@@ -29,6 +33,7 @@ class UserBookingListBody extends StatelessWidget {
                 ),
               ),
               Positioned(
+                // top: 10,
                 child: Container(
                   margin: EdgeInsets.only(left: 25, top: 0, right: 25),
                   child: Row(
@@ -50,6 +55,53 @@ class UserBookingListBody extends StatelessWidget {
             ],
           ),
         ),
+        FutureBuilder<List<Booking>>(
+            future: _homeScreenViewModel
+                .getUserBookingList(_homeScreenViewModel.user.id),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Booking>> snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          trailing: Icon(
+                            Icons.check_circle_outline_outlined,
+                            size: 40,
+                            color: Colors.green,
+                          ),
+                          title: Text(
+                            'Date: ${snapshot.data[index].date}',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          subtitle: Text('Date: ${snapshot.data[index].date}'),
+                          // Column(
+                          //   crossAxisAlignment:
+                          //       CrossAxisAlignment.start,
+                          //   children: [
+                          //     Text(
+                          //       'Date: ${snapshot.data[index].date}',
+                          //       style: TextStyle(fontSize: 20),
+                          //     ),
+                          //     Text(
+                          //       'Time: ${snapshot.data[index].time}',
+                          //       style: TextStyle(fontSize: 20),
+                          //     ),
+                          //     Text(
+                          //       'Time: ${snapshot.data[index].time}',
+                          //       style: TextStyle(fontSize: 20),
+                          //     ),
+                          //   ],
+                        ),
+                      );
+                    });
+              } else
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+            }),
       ],
     );
   }

@@ -26,7 +26,7 @@ class HomeBottomNav extends StatelessWidget {
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: 'Home'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.book_online_outlined), label: 'Booking'),
+            icon: Icon(Icons.menu_book_rounded), label: 'Booking'),
         BottomNavigationBarItem(
             icon: Icon(Icons.person_rounded), label: 'Profile'),
       ],

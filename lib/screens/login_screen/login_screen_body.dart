@@ -2,12 +2,16 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
+import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
+import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 
 class LoginScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
+    LoginViewModel _loginViewModel = Provider.of<LoginViewModel>(context);
+    HomeScreenViewModel _homeScreenViewModel =
+        Provider.of<HomeScreenViewModel>(context);
 
     return Center(
       child: Column(
@@ -46,7 +50,7 @@ class LoginScreenBody extends StatelessWidget {
                   )),
           SizedBox(
             height: 25,
-            child: !loginViewModel.showErrorMsg
+            child: !_loginViewModel.showErrorMsg
                 ? null
                 : DefaultTextStyle(
                     style: TextStyle(
@@ -70,7 +74,9 @@ class LoginScreenBody extends StatelessWidget {
               textStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
             child: Text('LOGIN'),
-            onPressed: () => loginViewModel.onLoginPressed(context),
+            onPressed: () {
+              _loginViewModel.onLoginPressed(context, _homeScreenViewModel);
+            },
           ),
           const SizedBox(height: 10),
           GestureDetector(
