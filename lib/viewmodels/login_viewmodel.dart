@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/services/user_service.dart';
+import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 
 import '../dependencies.dart';
 
@@ -33,7 +34,7 @@ class LoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  onLoginPressed(BuildContext context) async {
+  onLoginPressed(BuildContext context, HomeScreenViewModel hsvm) async {
     user = await userService.getUserByLoginAndPassword(
         username: username, password: password);
 
@@ -47,6 +48,8 @@ class LoginViewModel extends ChangeNotifier {
       showErrorMsg = false;
       Navigator.pushNamedAndRemoveUntil(
           context, '/home', ModalRoute.withName('/main'));
+      hsvm.user = user;
+      // print(hsvm.user.id);
     }
   }
 
