@@ -62,7 +62,7 @@ class _BookingBodyState extends State<BookingBody> {
                     padding: const EdgeInsets.only(
                         top: 3.0, bottom: 3.0, right: 0, left: 12.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         InkWell(
                           child: Text(
