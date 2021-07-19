@@ -44,8 +44,14 @@ class OrderFoodViewModel extends ChangeNotifier {
     final result = await orderService.createnewOrder(order);
     if (result == null)
       print('Failed');
-    else
-      Navigator.pushNamed(context, '/ordersuccess');
+    else {
+      Navigator.pushNamed(
+        context,
+        '/ordersuccess',
+        arguments: 'dsfsjdk',
+      );
+      food.clear();
+    }
   }
 
   setUserOrder(Booking booking) {
