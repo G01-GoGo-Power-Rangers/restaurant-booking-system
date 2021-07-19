@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_system/models/booking.dart';
 import 'package:restaurant_booking_system/models/user.dart';
