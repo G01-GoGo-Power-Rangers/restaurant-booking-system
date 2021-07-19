@@ -4,7 +4,6 @@ import 'package:restaurant_booking_system/screens/customer/booking/booking_scree
 import 'package:restaurant_booking_system/screens/customer/menu/view_menu/view_menu_screen.dart';
 import 'package:restaurant_booking_system/screens/customer/order_food/order_food_screen.dart';
 import 'package:restaurant_booking_system/screens/home_screen/home_screen.dart';
-import 'package:restaurant_booking_system/screens/home_screen/profile/profile_screen.dart';
 import 'package:restaurant_booking_system/screens/login_screen/login_screen.dart';
 import 'package:restaurant_booking_system/screens/main_screen/main_screen.dart';
 import 'package:restaurant_booking_system/screens/register/register_screen.dart';
@@ -13,23 +12,15 @@ import 'package:restaurant_booking_system/screens/staff/manage_booking/booking_d
 
 import 'screens/customer/menu/cart/cart_screen.dart';
 import 'screens/customer/menu/order_menu/order_menu_screen.dart';
-import 'screens/customer/menu/order_success_screen.dart';
+import 'widget/order_success_screen.dart';
 import 'screens/staff/manage_booking/booking_list/booking_list_screen.dart';
+import 'widget/register_success.dart';
 
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
-      // return OrderMenuScreen.route();
-      // return MainScreen.route();
-      // return OrderSuccessScreen.route();
-      // return CartScreen.route();
-      // return OrderFoodScreen.route();
-      // return BookingScreen.route();
-      // return HomeScreen.route();
-      return SplashScreen.route();
-    // return ProfileScreen.route();
-    // return BookingListScreen.route();
-    // return BookingDetailsScreen.route();
+      // return SplashScreen.route();
+      return CartScreen.route();
 
     case '/main':
       return MainScreen.route();
@@ -66,6 +57,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/ordersuccess':
       return OrderSuccessScreen.route();
+
+    case '/registersuccess':
+      return RegisterSuccessScreen.route();
   }
   return null;
 }
