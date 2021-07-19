@@ -100,7 +100,7 @@ class RegisterScreenBody extends StatelessWidget {
                     TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               ),
               child: Text('REGISTER'),
-              onPressed: () => registerViewModel.onRegisterPressed()),
+              onPressed: () => registerViewModel.onRegisterPressed(context)),
           const SizedBox(height: 10),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, '/login'),
