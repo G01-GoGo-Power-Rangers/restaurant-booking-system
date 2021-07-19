@@ -30,7 +30,6 @@ void main() {
     ],
     child: MyApp(),
   ));
-  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -39,9 +38,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Restaurant Booking System',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
       onGenerateRoute: createRoute,
       initialRoute: '/',
     );

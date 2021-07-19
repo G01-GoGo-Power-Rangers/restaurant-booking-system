@@ -16,8 +16,6 @@ class CartBottomNavBar extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      // height: 110,
-      // color: Colors.red,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(

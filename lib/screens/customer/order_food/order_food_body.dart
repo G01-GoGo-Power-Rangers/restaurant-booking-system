@@ -141,18 +141,6 @@ class OrderFoodBody extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // ElevatedButton(
-              //   style: ElevatedButton.styleFrom(
-              //     primary: kPrimaryColorDarker,
-              //     padding:
-              //         EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-              //     minimumSize: Size(310.0, 35.0),
-              //     textStyle:
-              //         TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              //   ),
-              //   child: Text('PROCEED TO PAYMENT'),
-              //   onPressed: () => {},
-              // ),
               new Padding(padding: EdgeInsets.all(10)),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(

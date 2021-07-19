@@ -48,8 +48,6 @@ class BookingDetailsBody extends StatelessWidget {
               Card(
                 child: ListTile(
                   leading: Icon(Icons.attach_money_rounded),
-                  // title: Text(
-                  //     'Total Price: RM${(booking.price + snapshot.data.totalPrice).ro}',
                   title: Text(
                       'Total Price: RM ${(booking.price + snapshot.data.totalPrice).toStringAsFixed(2)}',
                       style: TextStyle(fontSize: 20)),
@@ -88,7 +86,6 @@ class BookingDetailsBody extends StatelessWidget {
                         primary: kPrimaryColorDarker,
                         padding: EdgeInsets.symmetric(
                             vertical: 15.0, horizontal: 10.0),
-                        // minimumSize: Size(230.0, 50.0),
                         minimumSize: Size(double.infinity, 50),
                         textStyle: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold),

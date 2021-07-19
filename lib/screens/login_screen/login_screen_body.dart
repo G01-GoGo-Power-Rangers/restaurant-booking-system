@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/constant.dart';
-import 'package:restaurant_booking_system/viewmodels/booking_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 

@@ -19,8 +19,7 @@ import 'widget/register_success.dart';
 Route<dynamic> createRoute(settings) {
   switch (settings.name) {
     case '/':
-      // return SplashScreen.route();
-      return CartScreen.route();
+      return SplashScreen.route();
 
     case '/main':
       return MainScreen.route();

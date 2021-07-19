@@ -10,7 +10,6 @@ class CartItemCard extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          // width: MediaQuery.of(context).size.width * 0.8,
           child: AspectRatio(
             aspectRatio: 3.7,
             child: Container(
@@ -42,7 +41,6 @@ class CartItemCard extends StatelessWidget {
                 ),
               ),
               decoration: BoxDecoration(
-                // border: Border.all(color: Colors.grey),
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(5),
               ),

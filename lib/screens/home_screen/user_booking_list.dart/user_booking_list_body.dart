@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_booking_system/models/booking.dart';
-import 'package:restaurant_booking_system/models/user.dart';
 import 'package:restaurant_booking_system/viewmodels/home_screen_viewmodel.dart';
 import 'package:restaurant_booking_system/viewmodels/login_viewmodel.dart';
 
@@ -77,23 +76,6 @@ class UserBookingListBody extends StatelessWidget {
                             style: TextStyle(fontSize: 20),
                           ),
                           subtitle: Text('Date: ${snapshot.data[index].date}'),
-                          // Column(
-                          //   crossAxisAlignment:
-                          //       CrossAxisAlignment.start,
-                          //   children: [
-                          //     Text(
-                          //       'Date: ${snapshot.data[index].date}',
-                          //       style: TextStyle(fontSize: 20),
-                          //     ),
-                          //     Text(
-                          //       'Time: ${snapshot.data[index].time}',
-                          //       style: TextStyle(fontSize: 20),
-                          //     ),
-                          //     Text(
-                          //       'Time: ${snapshot.data[index].time}',
-                          //       style: TextStyle(fontSize: 20),
-                          //     ),
-                          //   ],
                         ),
                       );
                     });
