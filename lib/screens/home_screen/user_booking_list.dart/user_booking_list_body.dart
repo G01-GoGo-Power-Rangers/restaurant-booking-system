@@ -18,7 +18,7 @@ class UserBookingListBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          height: size.height * 0.2,
+          height: size.height * 0.1,
           child: Stack(
             children: <Widget>[
               Ink(
